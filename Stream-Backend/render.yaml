@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: backend-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /

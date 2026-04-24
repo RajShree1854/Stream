@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/ico2.png" type="image/x-icon" />
+    <title>Stream</title>
+    <style>
+        video {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="videoPlayer" controls playsinline></video>
+
+    <script>
+        async function fetchJSON(url) {
+            const response = await fetch(url);
+            return response.json();
+        }
+
+        async function initPlayer() {
+            const tmdbId = `{{ id }}`;
+            const seasonId = `{{ season }}`;
+            const episodeId = `{{ episode }}`;
+
+            let apiUrl = seasonId !== "None" && episodeId !== "None"
+                ? `/api/id/${tmdbId}?season_number=${seasonId}&episode_number=${episodeId}`
+                : `/api/id/${tmdbId}`;
+
+            const data = await fetchJSON(apiUrl);
+
+            const videoElement = document.getElementById("videoPlayer");
+
+            // Choose the highest quality available
+            if (data.telegram.length > 0) {
+                const bestQuality = data.telegram.reduce((prev, curr) => 
+                    parseInt(curr.quality) > parseInt(prev.quality) ? curr : prev
+                );
+
+                videoElement.src = `/dl/${bestQuality.id}/${bestQuality.name}`;
+                videoElement.poster = `https://image.tmdb.org/t/p/original${data.backdrop}`;
+            }
+        }
+
+        // Initialize the player on page load
+        initPlayer();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+.venv
+log.txt
+**/__pycache__/
+*.session
+*.session-journal
+*.session-shm
+*.session-wal
+/.vscode/
+test.py
+*.pyc
