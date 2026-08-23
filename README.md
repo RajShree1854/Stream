@@ -1,6 +1,6 @@
 # Stream-master
 
-A comprehensive full-stack streaming platform built to stream media files (Movies and TV Shows) directly from Telegram's servers to a user-friendly React web interface.
+A comprehensive full-stack streaming platform(SaaS) built to stream media files (Movies and TV Shows) directly from Telegram's servers to a user-friendly React web interface.
 
 The project is divided into two primary components: **Stream-Backend** (FastAPI + Pyrogram) and **Stream-Frontend** (React + Vite + Firebase).
 
