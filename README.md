@@ -1,4 +1,4 @@
-# Stream-master
+# Vexor - On-Demand Content Delivery System
 
 A comprehensive full-stack streaming platform(SaaS) built to stream media files (Movies and TV Shows) directly from Telegram's servers to a user-friendly React web interface.
 
